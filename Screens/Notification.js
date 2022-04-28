@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, Vibration, StyleSheet, Modal } from 'react-native'
 import Button from "../Components/Button";
+import { Audio } from 'expo-av';
 
 
 
@@ -16,6 +17,13 @@ const Notification = () => {
         Vibration.vibrate(500);
       };
 
+    const Ringtone = async () => {
+        const { sound } = await Audio.Sound.createAsync(
+        require("../assets/mixkit-arabian-mystery-harp-notification-2489.wav")
+        );
+        await sound.playAsync();
+      };
+
 
     return (
         <View>
@@ -28,6 +36,7 @@ const Notification = () => {
             visible={visible}>
                 <View style = {styles.boxContainer}>
                 <Text style={styles.boxTitle}>Notification</Text>
+                    <Button title = "Ringtone" handlePress ={Ringtone} />  
                     <Button title = "Vibrate" handlePress={Vibrate} />
                     <Button title = "Close" handlePress={changeDialogboxState} />
                 </View>
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
     },
     boxContainer:{
         marginTop: 80,
-        backgroundColor: '#e5eb34',
+        backgroundColor: '#E1E0E0',
         borderRadius: 20,
         padding: 35,
         justifyContent: 'center',

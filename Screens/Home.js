@@ -118,12 +118,9 @@ const Home = ({navigation}) => {
               value={reporterName}
             />              
             <Button title="Submit" handlePress={submit}/>
-            <View style = {{flexDirection:"row"}}>
-              <Button title="Show All" handlePress ={showResult} />
-              <Button title="Search" handlePress = {search} />
-
-            </View>
-              <Button title="Notification" handlePress = {notify} />
+            <Button title="Show All" handlePress ={showResult} />
+            <Button title="Search" handlePress = {search} />
+            <Button title="Notification" handlePress = {notify} />
           </View>
         </ScrollView>
         )

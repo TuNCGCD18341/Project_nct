@@ -6,44 +6,14 @@ import Item from '../Components/Item'
 const database = SQLite.openDatabase("dbName", 2.0)
 
 const Result = ({navigation}) => {
-    const [activity, setActivity] = useState("")
-    const [location, setLocation] = useState("");
-    const [date, setDate] = useState("");
-    const [timeOfAttendance, setTimeOfAttendance] = useState("");
-    const [reporterName, setReporterName] = useState("");
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getData();
+        
         getResult();
     }, [])
 
-    const getData = () => {
-        try {
-            database.transaction((tx) => {
-              console.log(123);
-              tx.executeSql("SELECT Activity, Location, Date, TimeOfAttendance, ReporterName FROM DATABASE;", [], (tx, result) => {
-                console.log(JSON.stringify(result.rows));
-                var len = result.rows.length;
-                console.log(len);
-                if (len > 0) {  
-                  const resultActivity= result.rows.item(0).Activity;
-                  const resultLocation = result.rows.item(0).Location;
-                  const resultDate = result.rows.item(0).Date;
-                  const resultTimeOfAttendace = result.rows.item(0).TimeOfAttendance;
-                  const resultReporterName = result.rows.item(0).ReporterName;
-                  setActivity(resultActivity);
-                  setLocation(resultLocation);
-                  setDate(resultDate);
-                  setTimeOfAttendance(resultTimeOfAttendace);
-                  setReporterName(resultReporterName);
-                }
-              });
-            });
-          } catch (error) {
-            console.log(error);
-          }
-    }
+    
 
     const getResult = () => {
         try {

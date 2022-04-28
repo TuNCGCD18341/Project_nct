@@ -18,10 +18,16 @@ const Home = ({navigation}) => {
     }, []);
     
     const submit = () => {
-        if (activity.length === 0 || location.length === 0 || date.length === 0 
-            || timeOfAttendance.length === 0|| reporterName.length === 0) {
-            Alert.alert("Warning !!! Please enter inputs !!!");
-          } else {
+      if (activity.length === 0) {
+        Alert.alert("Please enter activity name.");
+      }
+      else if (date.length === 0){
+        Alert.alert("Please enter date.")
+      } 
+      else if (reporterName.length === 0){
+        Alert.alert("Please enter reporter's name.")
+      }
+      else {
             try {
               database.transaction((tx) => {
                 tx.executeSql(
@@ -60,7 +66,7 @@ const Home = ({navigation}) => {
           <Text style={styles.text}>Home</Text>
           <TextInput
             style={styles.input}
-            placeholder="Activity Name"
+            placeholder="Activity Name (Required)"
             onChangeText={(value) => setActivity(value)}
             value={activity}
           />
@@ -72,19 +78,19 @@ const Home = ({navigation}) => {
           />
            <TextInput
             style={styles.input}
-            placeholder="Date"
+            placeholder="Date (Required)"
             onChangeText={(value) => setDate(value)}
             value={date}
           />
            <TextInput
             style={styles.input}
-            placeholder="Time of attending"
+            placeholder="Time of attending (Required)"
             onChangeText={(value) => setTimeOfAttendance(value)}
             value={timeOfAttendance}
           />
            <TextInput
             style={styles.input}
-            placeholder="Name of Reporter"
+            placeholder="Name of Reporter (Required)"
             onChangeText={(value) => setReporterName(value)}
             value={reporterName}
           />

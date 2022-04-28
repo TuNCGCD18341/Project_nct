@@ -2,8 +2,9 @@ import { View, Text, Alert, TextInput, StyleSheet } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import Button from '../Components/Button'
 import * as SQlite from "expo-sqlite"
+import Search from './Search'
 
-const database = SQlite.openDatabase("dbName", 1.0)
+const database = SQlite.openDatabase("dbName", 2.0)
 
 const Home = ({navigation}) => {
     const [activity, setActivity] = useState("")
@@ -42,6 +43,11 @@ const Home = ({navigation}) => {
     const showResult = () =>{
         navigation.navigate("Result");
     };
+
+    const search = () => {
+      navigation.navigate("Search");
+    }
+
     const createTable = () => {
         database.transaction((tx) => {
           tx.executeSql(
@@ -84,7 +90,7 @@ const Home = ({navigation}) => {
           />
           <View style = {{flexDirection:"row"}}>
           <Button title="Show All" handlePress ={showResult} />
-          <Button title="Search" />
+          <Button title="Search" handlePress = {search} />
           <Button title="Submit" handlePress={submit}/>
           </View>
         </View>

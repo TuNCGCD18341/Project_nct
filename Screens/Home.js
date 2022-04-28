@@ -54,6 +54,10 @@ const Home = ({navigation}) => {
       navigation.navigate("Search");
     }
 
+    const notify = () => {
+      navigation.navigate("Notification")
+    }
+
     const createTable = () => {
         database.transaction((tx) => {
           tx.executeSql(
@@ -119,6 +123,7 @@ const Home = ({navigation}) => {
               <Button title="Search" handlePress = {search} />
 
             </View>
+              <Button title="Notification" handlePress = {notify} />
           </View>
         </ScrollView>
         )

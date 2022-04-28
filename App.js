@@ -8,6 +8,7 @@ import Home from './Screens/Home';
 import Result from './Screens/Result';
 import Detail from './Screens/Detail';
 import Search from './Screens/Search';
+import Notification from './Screens/Notification';
 
 
 const Stack = createStackNavigator();
@@ -43,6 +44,14 @@ export default function App() {
         name = "Search"
         component={Search}
         />
+      
+        <Stack.Screen options={{
+          title: "Notification"
+        }}
+        name = "Notification"
+        component={Notification} 
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -19,16 +19,12 @@ const Item = ({result, navigation }) => {
         <Text style={styles.text}>Name of reporter: {result.ReporterName}</Text>
       </View>
 
-      <TouchableOpacity onPress = {resultDetail} style = {styles.button}>
-        <Text style = {{
-          alignItems:"center",
-          justifyContent:"center",
-          paddingHorizontal:20,
-          fontSize:12,
-          textTransform:"uppercase",
-          color:"white"
-        }}>Detail</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: "column"}}>
+        <TouchableOpacity onPress = {resultDetail} style = {styles.button}>
+          <Text style = {styles.buttonText}>Detail</Text>
+        </TouchableOpacity>
+  
+      </View>
 
     </View>
   )
@@ -46,19 +42,14 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
       },
       text: {
-        fontSize: 20,
-        fontWeight: "bold",
-      },
-      textTitle: {
-        fontSize: 40,
-          fontWeight: "bold",
-          margin: 15,
+        fontSize: 15,
+        marginHorizontal: 12
       },
       Id:{
-        fontSize: 40,
+        fontSize: 15,
         fontWeight: "bold",
-        margin: 15,
-        color:"green"
+        color:"green",
+        marginHorizontal: 5
       },
       button: {
         paddingLeft: 2,
@@ -72,5 +63,12 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop:20,
         marginHorizontal:5,
-      }
+      },
+      buttonText:{
+        alignItems:"center",
+        justifyContent:"center",
+        paddingHorizontal:10,
+        fontSize:12,
+        color:"white"
+      },
 })

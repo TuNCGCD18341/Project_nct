@@ -33,32 +33,25 @@ const Search = ({navigation}) => {
       };
 
     return (
+      <View style={styles.container}>
+      <Text style = {styles.title}>Search</Text>
+      <View style={{ flex: 1, alignItems: 'center'}}>
+        <TextInput
+        placeholder="Search by Activity Name"
+        style={styles.input}
+        value = {searchResult}
+        onChangeText={(value) => setSearchResult(value)}
+        />
+        <Button title="Search" handlePress={getSearch}/>
         <View style={styles.container}>
-            <Text
-            style = {{
-                fontSize:30,
-                textTransform:"uppercase",
-                marginTop:20
-            }}
-            >Search</Text>
-            <View style={{ flex: 1, alignItems: 'center'}}>
-                <TextInput
-                placeholder="Search by Activity Name"
-                style={styles.input}
-                value = {searchResult}
-                onChangeText={(value) => setSearchResult(value)}
-                />
-                <Button title="SEARCH" handlePress={getSearch}/>
-
-        <View style={styles.container}>
-        <FlatList
-        data={data}
-        keyExtractor={(item) => String(item.Id)}
-        renderItem={({ item }) => (
-          <Item result={item} navigation={navigation} />
-        )}
-      />
-    </View>
+          <FlatList
+          data={data}
+          keyExtractor={(item) => String(item.Id)}
+          renderItem={({ item }) => (
+            <ResultItem result={item} navigation={navigation} />
+          )}
+          />
+        </View>
         </View>
         </View>
     )
@@ -67,18 +60,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         backgroundColor: "#fff",
+      },
+      title: {
+        fontSize: 25,
+        fontWeight: "bold",
+        margin: 15,
       },
     input: {
         borderWidth: 1,
         height: 50,
         width: 300,
         borderRadius: 5,
-        textAlign: "center",
-        fontSize: 20,
+        textAlign: "left",
+        fontSize: 15,
         marginBottom: 10,
         marginTop: 10,
+        padding: 10,
       },
 })
 

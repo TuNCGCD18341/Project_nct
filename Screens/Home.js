@@ -1,8 +1,8 @@
-import { View, Text, Alert, TextInput, StyleSheet } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import Button from '../Components/Button'
 import * as SQlite from "expo-sqlite"
 import DatePicker from 'react-native-datepicker'
+import { View, Text, Alert, TextInput, StyleSheet, ScrollView } from 'react-native'
 
 const database = SQlite.openDatabase("dbName", 2.0)
 
@@ -62,20 +62,21 @@ const Home = ({navigation}) => {
         });
       };
       return (
-        <View style={styles.body}>
-          <Text style={styles.text}>Home</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Activity Name (Required)"
-            onChangeText={(value) => setActivity(value)}
-            value={activity}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Location"
-            onChangeText={(value) => setLocation(value)}
-            value={location}
-          />
+        <ScrollView>
+            <View style={styles.body}>
+            <Text style={styles.title}>Home</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Activity Name (Required)"
+              onChangeText={(value) => setActivity(value)}
+              value={activity}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Location"
+              onChangeText={(value) => setLocation(value)}
+              value={location}
+            />
           <DatePicker
             style={styles.datePicker}
             date={date}
@@ -99,25 +100,27 @@ const Home = ({navigation}) => {
             onDateChange={(date) => {
               setDate(date);
             }}
-        />
-           <TextInput
-            style={styles.input}
-            placeholder="Time of attending (Required)"
-            onChangeText={(value) => setTimeOfAttendance(value)}
-            value={timeOfAttendance}
           />
-           <TextInput
-            style={styles.input}
-            placeholder="Name of Reporter (Required)"
-            onChangeText={(value) => setReporterName(value)}
-            value={reporterName}
-          />
-          <View style = {{flexDirection:"row"}}>
-          <Button title="Show All" handlePress ={showResult} />
-          <Button title="Search" handlePress = {search} />
-          <Button title="Submit" handlePress={submit}/>
+          <TextInput
+              style={styles.input}
+              placeholder="Time of Attending"
+              onChangeText={(value) => setTimeOfAttendance(value)}
+              value = {timeOfAttendance}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Reporter Name (Required)"
+              onChangeText={(value) => setReporterName(value)}
+              value={reporterName}
+            />              
+            <Button title="Submit" handlePress={submit}/>
+            <View style = {{flexDirection:"row"}}>
+              <Button title="Show All" handlePress ={showResult} />
+              <Button title="Search" handlePress = {search} />
+
+            </View>
           </View>
-        </View>
+        </ScrollView>
         )
 }
 
@@ -127,8 +130,8 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "flex-start",
     },
-    text: {
-      fontSize: 40,
+    title: {
+      fontSize: 25,
       fontWeight: "bold",
       margin: 15,
     },
@@ -145,7 +148,8 @@ const styles = StyleSheet.create({
       width: 300,
       borderRadius: 5,
       textAlign: "center",
-      fontSize: 20,
+      fontSize: 15,
+      padding: 10,
       marginBottom: 10,
       marginTop: 10,
     },

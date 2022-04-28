@@ -36,7 +36,7 @@ const Result = ({navigation}) => {
       };
 
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
       <FlatList
         data={data}
         keyExtractor={(item) => String(item.Id)}
@@ -51,7 +51,6 @@ const Result = ({navigation}) => {
 export default Result
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: "#fff",

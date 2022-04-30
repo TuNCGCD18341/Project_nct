@@ -68,7 +68,7 @@ const Home = ({navigation}) => {
       return (
         <ScrollView>
             <View style={styles.body}>
-            <Text style={styles.title}>Home</Text>
+            <Text style={styles.title}>Main Screen</Text>
             <TextInput
               style={styles.input}
               placeholder="Activity Name (Required)"
